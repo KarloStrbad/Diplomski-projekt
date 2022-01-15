@@ -79,7 +79,6 @@ int _write(int file, char *ptr, int len)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	//unsigned char data[9] = {'T','E','S','T',' ','1','2','3','\0'};
 
 	const char * ifname = "Intel(R) Ethernet Connection (2) I218-V";
 
@@ -113,7 +112,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
 //  hal_ethernet_open();
-
 //  ec_init(ifname);
 //  ec_config_init(FALSE);
 

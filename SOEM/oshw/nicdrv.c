@@ -160,7 +160,7 @@ int ecx_setupnic(ecx_portt *port, const char *ifname, int secondary)
       psock = &(port->sockhandle);
    }
    
-   // open (=> SOEM.cpp)
+   // open (=> SOEM.c)
    int result = hal_ethernet_open();
    
    if (result != 0)
@@ -192,7 +192,7 @@ int ecx_closenic(ecx_portt *port)
       DeleteCriticalSection(port->tx_mutex);
       DeleteCriticalSection(port->rx_mutex);
       
-      // close (=> SOEM.cpp)
+      // close (=> SOEM.c)
       hal_ethernet_close();
       
       port->sockhandle = -1;
@@ -316,7 +316,7 @@ int ecx_outframe(ecx_portt *port, int idx, int stacknumber)
    lp = (*stack->txbuflength)[idx];
    (*stack->rxbufstat)[idx] = EC_BUF_TX;
    
-   // write (=> SOEM.cpp)
+   // write (=> SOEM.c)
    rval = hal_ethernet_send((*stack->txbuf)[idx], lp);
    
    if (rval != 0)
@@ -402,7 +402,7 @@ static int ecx_recvpkt(ecx_portt *port, int stacknumber)
    
    lp = sizeof(port->tempinbuf);
    
-   // read (=> SOEM.cpp)
+   // read (=> SOEM.c)
    res = hal_ethernet_recv(&pkt_data);
    
    if (res <=0 )
